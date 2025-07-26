@@ -24,12 +24,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import { LoginSelectors } from '../e2e/auth/locators/loginLocators';
+import { LoginPage } from '../e2e/auth/pages/loginPage';
 
 Cypress.Commands.add('login', (email, password) => {
-    cy.session([email, password], () => {
-        cy.visit('/login');
-        cy.get(LoginSelectors.emailField).type(email);
-        cy.get(LoginSelectors.passwordField).type(password);
-        cy.get(LoginSelectors.submitButton).click();
-    });
+
+    const loginPage = new LoginPage();
+    loginPage
+        .visit()
+        .fillCredentials(email, password)
+        .submit();
+
 });

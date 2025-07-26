@@ -2,17 +2,41 @@
     "registerWithValidCredentials": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "test@potsk.de",
+        "email": "test@potsk.dde",
         "phone": "0123456789",
         "password": "Test1234",
         "confirmPassword": "Test1234"
     },
+"registerWithInvalidEmail": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "invalid-email-format",
+        "phone": "0123456789",
+        "password": "Test1234",
+        "confirmPassword": "Test1234"
+    },
+
+    "registerWithEmptyFields": {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "password": "",
+        "confirmPassword": ""
+    },
+
+
+
     "loginWithValidCredentials": {
-        "username": "test@potsk.de",
+        "email": "test@potsk.de",
         "password": "Test1234"
     },
     "loginWithInvalidCredentials": {
-        "username": "xx@xx.xx",
+        "email": "xx@xx.xx",
         "password": "xxxxx"
+    },
+    "ErrorMessages": {
+        "emptyEmail": " Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.",
+        "emptyPassword": "Warning: No match for E-Mail Address and/or Password."
     }
 }

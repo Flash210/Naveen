@@ -1,17 +1,40 @@
 
-// import { LoginSelectors } from '../locators/loginLocators';
-// export class LoginPage {
+import { LoginSelectors } from '../locators/loginLocators';
+export class LoginPage {
+
+    visit() {
+        cy.visit('/login');
+        return this;
+    }
+    fillCredentials(email, password) {
 
 
-//     fillCredentials(username, password) {
-//         cy.get(LoginSelectors.emailField).type(username);
-//         cy.get(LoginSelectors.passwordField).type(password);
-//         return this;
-//     }
+        if (!email) {
+            cy.get(LoginSelectors.emailField).clear();
+        } else {
+            cy.get(LoginSelectors.emailField).clear().type(email);
+        }
 
-//     submit() {
-//         cy.get(LoginSelectors.submitButton).click();
-//         return this;
-//     }
-// }
+        if (!password) {
+            cy.get(LoginSelectors.passwordField).clear();
+        } else {
+            cy.get(LoginSelectors.passwordField).clear().type(password);
+        }
+
+
+
+        return this;
+    }
+
+
+    submit() {
+
+        cy.get(LoginSelectors.submitButton).click();
+        return this;
+    }
+
+    getErrorMessage() {
+        return cy.get('.alert-danger'); // Update selector to match your app
+    }
+}
 
